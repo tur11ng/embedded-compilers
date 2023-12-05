@@ -1,21 +1,9 @@
 #include <stdio.h>
-#include <stdlib.h>
 #include <time.h>
 #include <cblas.h>
+#include <x86intrin.h>
 
 #include "../utils/utils.h"
-
-#ifndef N
-#error "N must be defined"
-#endif
-
-#ifndef BLOCK_SIZE
-#error "BLOCK_SIZE must be defined"
-#endi
-
-#ifndef L1_CACHE_LINE_SIZE // Or sysconf (_SC_LEVEL1_DCACHE_LINESIZE)
-#error "L1_CACHE_LINE_SIZE must be defined"
-#endi
 
 f#define L1_CACHE_LINE_SIZE 64
 
@@ -40,7 +28,14 @@ void sgemm_loop_tiling() {
 }
 
 void sgemm_loop_unrolling_simd() {
-
+    for (int k=0; k<N; k+=BLOCK_SIZE) {
+        for (int i=0; i<N; i+=BLOCK_SIZE) {
+            for (int j=0; j<N; j+=BLOCK_SIZE) {
+                __m128 a;
+                C[i * N + j] += A[i * N + k] * B[k * N + j];
+            }
+        }
+    }
 }
 
 void sgemm_blas(float *A, float *B, float* C) {

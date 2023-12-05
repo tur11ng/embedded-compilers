@@ -1,23 +1,9 @@
+#include <stdio.h>
+#include <stdlib.h>
+
 #include "../utils/utils.h"
 
-#ifndef N
-#error "N must be defined"
-#endif
-
-#define sgemm(x, y, z) \
-    do { \
-        for (int x=0; x<N; x++) { \
-            for (int y=0; y<N; y++) { \
-                for (int z=0; z<N; z++) { \
-                    C[y * N + z] += A[y * N + x] * B[x * N + z]; \
-                } \
-            } \
-        } \
-    } while(0)
-
 int main() {
-    srand(time(NULL));
-
     float A[N * N];
     float B[N * N];
     float C[N * N];
@@ -26,17 +12,29 @@ int main() {
     fill_array(B);
     fill_array(C);
 
-#ifdef ijk
+    PAPI_INIT();
+
+    PAPI_MEASURE_START("ijk");
     sgemm(i, j, k);
-#elif ikj
+    PAPI_MEASURE_END("ijk");
+
+    PAPI_MEASURE_START("ikj");
     sgemm(i, k, j);
-#elif jik
+    PAPI_MEASURE_END("ikj");
+
+    PAPI_MEASURE_START("jik");
     sgemm(j, i, k);
-#elif jki
+    PAPI_MEASURE_END("jik");
+
+    PAPI_MEASURE_START("jki");
     sgemm(j, k, i);
-#elif kij
+    PAPI_MEASURE_END("jki");
+
+    PAPI_MEASURE_START("kij");
     sgemm(k, i, j);
-#elif kji
+    PAPI_MEASURE_END("kij");
+
+    PAPI_MEASURE_START("kji");
     sgemm(k, j, i);
-#endif
+    PAPI_MEASURE_END("kji");
 }
