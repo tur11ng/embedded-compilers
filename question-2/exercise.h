@@ -5,15 +5,17 @@
 #error "N must be defined"
 #endif
 
-#define sgemm(x, y, z) \
+#define LOOP(IMAX, VAR, ...) for (int VAR = 0; VAR < IMAX; VAR++) { __VA_ARGS__ }
+
+#define SGEMM(I, J, K) \
     do { \
-        for (int x=0; x<N; x++) { \
-            for (int y=0; y<N; y++) { \
-                for (int z=0; z<N; z++) { \
-                    C[y * N + z] += A[y * N + x] * B[x * N + z]; \
-                } \
-            } \
-        } \
-    } while(0)
+        LOOP(10, I, \
+            LOOP(10, J, \
+                LOOP(10, K, \
+                    C[j*N+k] = A[j*N+i] * B[i*N+k]; \
+                ) \
+            ) \
+        ) \
+    } while(0);
 
 #endif //EMBEDDED_COMPILERS_EXERCISE_H

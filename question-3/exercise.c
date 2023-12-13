@@ -5,7 +5,7 @@
 
 #include "../utils/utils.h"
 
-f#define L1_CACHE_LINE_SIZE 64
+#define L1_CACHE_LINE_SIZE 64
 
 void sgemm_dummy(float *A, float *B, float *C) {
     for (int k=0; k<N; k++) {

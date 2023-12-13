@@ -1,22 +1,12 @@
 
 C
-question-1/Makefile,7/f/7fe724cdd7316c2e81fc755f7bedba58b7284d8e
-9
-	report.md,b/1/b1a53158e9b65eca73278b10c515f048b27c209e
-C
 question-2/Makefile,6/8/680d1784b0e03f7ff7265aa7bd896fe2dc412c47
 C
 question-3/Makefile,9/0/90826fdc0c2b602cfcda09dbe77be0a02a42f408
-Å
-Q.idea/sonarlint/securityhotspotstore/b/1/b1a53158e9b65eca73278b10c515f048b27c209e,0/6/0673c389b7501fa2408fb118c36eb35318f36690
 S
 #.idea/sonarlint/issuestore/index.pb,9/f/9fe84ebb15faf917b7def6236dba604453cc61e0
 ]
 -.idea/sonarlint/securityhotspotstore/index.pb,8/8/88a9255124c95bdc913197c120a8d560edc59c8e
-w
-G.idea/sonarlint/issuestore/7/f/7fe724cdd7316c2e81fc755f7bedba58b7284d8e,7/6/7640a86c6058281b6f5fbaa61e7288dac4122731
-Å
-Q.idea/sonarlint/securityhotspotstore/7/f/7fe724cdd7316c2e81fc755f7bedba58b7284d8e,c/5/c591e3210ca956e4666924bac4499df397f1232f
 w
 G.idea/sonarlint/issuestore/6/8/680d1784b0e03f7ff7265aa7bd896fe2dc412c47,c/3/c3cfef3527196ae35aa51a3f85cc1e16b110e04d
 Å
@@ -25,5 +15,19 @@ Q.idea/sonarlint/securityhotspotstore/6/8/680d1784b0e03f7ff7265aa7bd896fe2dc412c
 Q.idea/sonarlint/securityhotspotstore/9/0/90826fdc0c2b602cfcda09dbe77be0a02a42f408,4/4/44a78cc0b0b289ce8be5b21f261ddcee6d58c511
 w
 G.idea/sonarlint/issuestore/9/0/90826fdc0c2b602cfcda09dbe77be0a02a42f408,2/b/2b253cff260d4890c26cbf2ad142ed21b773844f
-w
-G.idea/sonarlint/issuestore/b/1/b1a53158e9b65eca73278b10c515f048b27c209e,b/0/b0080a9802dd6c143c68869f966881c3e193ce43
+8
+Makefile,8/3/836efb6e25a091dcb4ff8e1dbb2f0be6a5cbf14c
+9
+	Report.md,1/a/1aa8a5c0bf4a49c6ceff3a7501d9b0d50bb49328
+E
+question-3/exercise.c,3/d/3d1a1b19372c193bd1f8ad0085605a09f19c4b18
+=
+utils/utils.h,4/4/44c4eafe5c1b80e47f8fb87117ca76d17f558bce
+E
+question-2/exercise.c,3/9/398f15ed76f9bca0a0ebe198d7405f1d029e3c82
+E
+question-2/exercise.h,3/8/38b0b2b527b90eccc38f2401c9f8542eebec4850
+H
+scripts/requirements.txt,a/b/abe43a22de051f3238d00dd13059d5a975da0445
+K
+scripts/roofline-plotter.py,d/b/db4017525f92582a4e8a9114930f7e3cbe8f9578

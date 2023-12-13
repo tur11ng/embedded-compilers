@@ -7,25 +7,26 @@
 void fill_array(float array[]);
 
 #define PAPI_INIT() \
-    do { \
-        int retval; \
-        char errstring[PAPI_MAX_STR_LEN]; \
-    } while(0)
+    int retval = PAPI_library_init(PAPI_VER_CURRENT); \
+    if (retval != PAPI_VER_CURRENT) { \
+        fprintf(stderr, "PAPI error: %s\n", PAPI_strerror(retval)); \
+        exit(1); \
+    } \
+    char errstring[PAPI_MAX_STR_LEN];
 
 #define PAPI_MEASURE_START(region) \
-    do { \
-        retval = PAPI_hl_region_begin(region); \
-        if ( retval != PAPI_OK ) { \
-            fprintf(stderr, "Error: %s\n", errstring); \
-            exit(1); \
-        } \
-    } while (0)
+    retval = PAPI_hl_region_begin(region); \
+    if (retval != PAPI_OK) { \
+        PAPI_perror("Error starting region measurement"); \
+        exit(1); \
+    }
 
 #define PAPI_MEASURE_END(region) \
     retval = PAPI_hl_region_end(region); \
-    if ( retval != PAPI_OK ) { \
-        fprintf(stderr, "Error: %s\n", errstring); \
+    if (retval != PAPI_OK) { \
+        PAPI_perror("Error ending region measurement"); \
         exit(1); \
     }
+
 
 #endif //EMBEDDED_COMPILERS_UTILS_H

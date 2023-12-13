@@ -1,12 +1,12 @@
 CC = gcc
-CPPFLAGS = -DN=$(N)
+CPPFLAGS = -DN=$(N) -I../utils/
 CFLAGS =
 LDFLAGS =
-LDLIBS =
+LDLIBS = -lpapi
 
 all: exercise
 
-exercise: exercise.c
+exercise: exercise.c ../utils/utils.c
 	$(CC) $(CPPFLAGS) $(CFLAGS) $< $(LDFLAGS) $(LDLIBS) -o $@
 
 run: exercise

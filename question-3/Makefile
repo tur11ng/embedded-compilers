@@ -6,7 +6,7 @@ LDLIBS = -lblas
 
 all: exercise
 
-exercise: exercise.c
+exercise: exercise.c ../utils/utils.c
 	$(CC) $(CPPFLAGS) $(CFLAGS) $< $(LDFLAGS) $(LDLIBS) -o $@
 
 run: exercise
