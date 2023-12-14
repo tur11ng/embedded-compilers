@@ -9,10 +9,10 @@
 
 #define SGEMM(I, J, K) \
     do { \
-        LOOP(10, I, \
-            LOOP(10, J, \
-                LOOP(10, K, \
-                    C[j*N+k] = A[j*N+i] * B[i*N+k]; \
+        LOOP(N, I, \
+            LOOP(N, J, \
+                LOOP(N, K, \
+                    C[j*N+k] += A[j*N+i] * B[i*N+k]; \
                 ) \
             ) \
         ) \

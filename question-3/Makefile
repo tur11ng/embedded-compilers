@@ -16,6 +16,6 @@ run: exercise
 
 
 clean:
-	rm -f exercise exercise.o
+	rm -rf exercise exercise.o papi-output
 
 .PHONY: all clean
