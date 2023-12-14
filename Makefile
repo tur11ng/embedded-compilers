@@ -4,9 +4,13 @@ SUBDIRS := question-2 question-3
 
 all: $(SUBDIRS)
 
-run:
+run: run-question-1 run-question-2
+
+run-question-2: clean
 	$(MAKE) -C question-2 run N=128
 	$(MAKE) -C question-2 run N=1024
+
+run-question-3:
 	$(MAKE) -C question-3 run N=128
 	$(MAKE) -C question-3 run N=1024
 

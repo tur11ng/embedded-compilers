@@ -5,9 +5,9 @@
 #include "exercise.h"
 
 int main() {
-    float A[N * N];
-    float B[N * N];
-    float C[N * N];
+    float A[N * N] = {0};
+    float B[N * N] = {0};
+    float C[N * N] = {0};
 
     fill_array(A);
     fill_array(B);

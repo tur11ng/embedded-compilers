@@ -16,6 +16,6 @@
                 ) \
             ) \
         ) \
-    } while(0);
+    } while(0)
 
 #endif //EMBEDDED_COMPILERS_EXERCISE_H
