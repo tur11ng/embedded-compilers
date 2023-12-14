@@ -14,8 +14,8 @@ def create_roofline_model(peak_performance, peak_bandwidth, my_operational_inten
         for oi in my_operational_intensities:
             plt.axvline(x=oi, color='r', linestyle='--', label=f'OI={oi}')
 
-    plt.xlabel('Operational Intensity (FLOPs/Byte)')
-    plt.ylabel('Performance (FLOPs/Second)')
+    plt.xlabel('Operational Intensity (GFLOPs/Byte)')
+    plt.ylabel('Performance (GFLOPs/Second)')
     plt.grid(True)
     plt.legend()
 
@@ -27,7 +27,7 @@ def create_roofline_model(peak_performance, peak_bandwidth, my_operational_inten
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='Create a roofline model')
-    parser.add_argument('-pp', '--peak-performance', type=float, dest="peak_performance", required=True, help='Peak Performance (FLOPs/Second)')
+    parser.add_argument('-pp', '--peak-performance', type=float, dest="peak_performance", required=True, help='Peak Performance (GFLOPs/Second)')
     parser.add_argument('-pb', '--peak-bandwidth', type=float, dest="peak_bandwidth", required=True, help='Peak Bandwidth (Bytes/Second)')
     parser.add_argument('-ois', '--operational-intensities', nargs='+', type=int, dest="operational_intensities", required=False, help='A list of integer values.')
     parser.add_argument('-o', '--output', type=str, dest="output_file_path", required=False, help='The filename to save the generated roofline model to')
