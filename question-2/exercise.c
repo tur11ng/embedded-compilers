@@ -1,8 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#include "../utils/utils.h"
 #include "exercise.h"
+#include "../utils/utils.h"
 
 int main() {
     float A[N * N] = {0};

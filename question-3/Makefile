@@ -1,21 +1,22 @@
 CC = gcc
-CPPFLAGS = -DN=$(N) -DBLOCK_SIZE=10 -DL1_CACHE_LINE_SIZE=64
-CFLAGS = -march=native -mavx2 -mfma
+CPPFLAGS = -DN=$(N) -DK=$(K) -DGEMM_BLOCK_SIZE=$(GEMM_BLOCK_SIZE) -I../utils/
+CFLAGS =
 LDFLAGS =
-LDLIBS = -lblas
+LDLIBS = -lpapi -lblas
 
 all: exercise
 
 exercise: exercise.c ../utils/utils.c
-	$(CC) $(CPPFLAGS) $(CFLAGS) $< $(LDFLAGS) $(LDLIBS) -o $@
+	$(CC) $(CPPFLAGS) $(CFLAGS) $^ $(LDFLAGS) $(LDLIBS) -o $@-$(N)
 
 run: exercise
-	export PAPI_EVENTS="PAPI_FP_OPS,PAPI_L1_DCM,PAPI_L1_ICM,PAPI_L2_DCM,PAPI_TLB_DM,PAPI_TLB_IM,PAPI_TOT_INS, \
-			  PAPI_TOT_CYC,PAPI_L1_DCA,PAPI_L2_DCA"
-	./exercise
-
+	export PAPI_EVENTS="PAPI_L1_DCA, PAPI_L1_DCM" && \
+	export PAPI_MULTIPLEX=1 && \
+	export PAPI_OUTPUT_DIRECTORY="./papi-output-$(N)" && \
+	../scripts/runner.sh $(CURDIR)/exercise-$(N) $(TIMES) && \
+	../scripts/stats-calculator.py -p ./papi-output-$(N) -o ./papi-output-$(N)/stats.txt
 
 clean:
-	rm -rf exercise exercise.o papi-output
+	rm -rf exercise-* exercise-$(N).o papi-output*
 
 .PHONY: all clean

@@ -1,5 +1,5 @@
 CC = gcc
-CPPFLAGS = -DN=$(N) -Iutils/
+CPPFLAGS = -DN=$(N) -I../utils/
 CFLAGS =
 LDFLAGS =
 LDLIBS = -lpapi
