@@ -15,7 +15,7 @@ int main() {
     fill_array(B);
     fill_array(C);
 
-    gemm(A, B, C);
+    gemm(A, B, C, N);
     copy_array(C, D, N);
 
     PAPI_INIT();
@@ -23,30 +23,30 @@ int main() {
     PAPI_MEASURE_START("ijk");
     SGEMM(i, j, k);
     PAPI_MEASURE_END("ijk");
-    assert_array_equals(C, D);
+    assert_array_equals(C, D, N);
 
     PAPI_MEASURE_START("ikj");
     SGEMM(i, k, j);
     PAPI_MEASURE_END("ikj");
-    assert_array_equals(C, D);
+    assert_array_equals(C, D, N);
 
     PAPI_MEASURE_START("jik");
     SGEMM(j, i, k);
     PAPI_MEASURE_END("jik");
-    assert_array_equals(C, D);
+    assert_array_equals(C, D, N);
 
     PAPI_MEASURE_START("jki");
     SGEMM(j, k, i);
     PAPI_MEASURE_END("jki");
-    assert_array_equals(C, D);
+    assert_array_equals(C, D, N);
 
     PAPI_MEASURE_START("kij");
     SGEMM(k, i, j);
     PAPI_MEASURE_END("kij");
-    assert_array_equals(C, D);
+    assert_array_equals(C, D, N);
 
     PAPI_MEASURE_START("kji");
     SGEMM(k, j, i);
     PAPI_MEASURE_END("kji");
-    assert_array_equals(C, D);
+    assert_array_equals(C, D, N);
 }

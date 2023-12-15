@@ -1,5 +1,6 @@
 #include <assert.h>
 #include <string.h>
+
 #include "utils.h"
 
 void fill_array(float array[]) {
@@ -10,7 +11,7 @@ void fill_array(float array[]) {
     }
 }
 
-void assert_array_equals(const int* arr1, const int* arr2, size_t size) {
+void assert_array_equals(float* arr1, float* arr2, size_t size) {
     for (size_t i = 0; i < size; ++i) {
         assert(arr1[i] == arr2[i]);
     }

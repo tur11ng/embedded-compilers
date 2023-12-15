@@ -6,7 +6,7 @@
 
 void fill_array(float array[]);
 void copy_array(const float* src, float* dest, size_t size);
-void assert_array_equals(const int* arr1, const int* arr2, size_t size);
+void assert_array_equals(float* arr1, float* arr2, size_t size);
 void gemm(float *A, float *B, float *C, size_t size);
 
 #define PAPI_INIT() \
