@@ -6,16 +6,16 @@
 #include "exercise.h"
 #include "../utils/utils.h"
 
-#define TILE_SIZE 16
+#define EMBEDDED_COMPILERS_TILE_SIZE 16
 
 void sgemm_loop_tiling(float *A, float *B, float *C) {
-    for (int i = 0; i < EMBEDDED_COMPILERS_N; i += TILE_SIZE) {
-        for (int j = 0; j < EMBEDDED_COMPILERS_N; j += TILE_SIZE) {
-            for (int p = 0; p < EMBEDDED_COMPILERS_N; p += TILE_SIZE) {
+    for (int i = 0; i < EMBEDDED_COMPILERS_N; i += EMBEDDED_COMPILERS_TILE_SIZE) {
+        for (int j = 0; j < EMBEDDED_COMPILERS_N; j += EMBEDDED_COMPILERS_TILE_SIZE) {
+            for (int p = 0; p < EMBEDDED_COMPILERS_N; p += EMBEDDED_COMPILERS_TILE_SIZE) {
                 // Compute matrix multiplication for the current tile
-                for (int ii = i; ii < i + EMBEDDED_COMPILERS_N && ii < EMBEDDED_COMPILERS_N; ++ii) {
-                    for (int jj = j; jj < j + EMBEDDED_COMPILERS_N && jj < EMBEDDED_COMPILERS_N; ++jj) {
-                        for (int pp = p; pp < p + EMBEDDED_COMPILERS_N && pp < EMBEDDED_COMPILERS_N; ++pp) {
+                for (int ii = i; ii < i + EMBEDDED_COMPILERS_TILE_SIZE && ii < EMBEDDED_COMPILERS_N; ++ii) {
+                    for (int jj = j; jj < j + EMBEDDED_COMPILERS_TILE_SIZE && jj < EMBEDDED_COMPILERS_N; ++jj) {
+                        for (int pp = p; pp < p + EMBEDDED_COMPILERS_TILE_SIZE && pp < EMBEDDED_COMPILERS_N; ++pp) {
                             C[ii * EMBEDDED_COMPILERS_N + jj] += A[ii * EMBEDDED_COMPILERS_N + pp] * B[pp * EMBEDDED_COMPILERS_N + jj];
                         }
                     }
