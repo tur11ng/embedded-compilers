@@ -2,7 +2,7 @@ CC = gcc
 CPPFLAGS = -DN=$(N) -DK=$(K) -DGEMM_BLOCK_SIZE=$(GEMM_BLOCK_SIZE) -I../utils/
 CFLAGS =
 LDFLAGS =
-LDLIBS = -lpapi -lblas -lcblas
+LDLIBS = -lpapi -lopenblas -lcblas
 
 all: exercise
 
