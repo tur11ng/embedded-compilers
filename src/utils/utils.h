@@ -4,10 +4,11 @@
 #include <stdlib.h>
 #include <papi.h>
 
+#ifndef EMBEDDED_COMPILERS_N
+#error "EMBEDDED_COMPILERS_N must be defined."
+#endif
+
 void fill_array(float array[]);
-void copy_array(const float* src, float* dest, size_t size);
-void assert_array_equals(float* arr1, float* arr2, size_t size);
-void gemm(float *A, float *B, float *C, size_t size);
 
 #define PAPI_INIT() \
     int retval = PAPI_library_init(PAPI_VER_CURRENT); \
